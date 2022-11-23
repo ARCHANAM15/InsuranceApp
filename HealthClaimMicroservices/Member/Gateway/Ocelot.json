@@ -1,0 +1,87 @@
+{
+  "Routes": [
+    //Member
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/login-user",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/Login/login-user",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/register-user",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/Login/register-user",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/add-member",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/Member/add-member",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/GetAllPolicyStatus",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/Member/GetAllPolicyStatus",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/Search",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/Member/Search",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/getAllMember",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/Member/getAllMember",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/login/user-data",
+      "DownstreamScheme": "https",
+      "ServiceName": "membersService",
+      "UpstreamPathTemplate": "/api/gateway/login/user-data",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+
+    //PolicyClaim
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/PolicySubmission/submit-policy",
+      "DownstreamScheme": "https",
+      "ServiceName": "policyService",
+      "UpstreamPathTemplate": "/api/gateway/policySubmission/submit-policy",  
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/policySubmission/GetPolicyStatus",
+      "DownstreamScheme": "https",
+      "ServiceName": "policyService",
+      "UpstreamPathTemplate": "/api/gateway/policySubmission/GetPolicyStatus",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+  ],
+  "GlobalConfiguration": {
+    // "BaseUrl": "http://localhost:44347"
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": "8500",
+      "Type": "Consul"
+    }
+  }
+}
