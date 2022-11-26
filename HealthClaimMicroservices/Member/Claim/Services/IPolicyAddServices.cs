@@ -10,5 +10,9 @@ namespace Claim.Services
     {
         PolicyTble SubmitPolicy(PolicyTble PolicyTble);
         IEnumerable<PolicyStatusTbl> GetAllPolicyStatus();
+
+        PolicyTble updatePolicy(PolicyTble PolicyTble);
+
+        PolicyTble getMemberPolicyDtsById(int policyId);
     }
 }

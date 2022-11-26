@@ -34,6 +34,23 @@ namespace Claim.Controllers
                 return Ok(ex);
             }
         }
+      [HttpPut]
+      [Route("update-policy")]
+        public IActionResult updatePolicy(PolicyTble policyTble)
+        {
+            try
+            {
+                var data = policyAddServices.updatePolicy(policyTble);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+        }
+
+
+
 
         [HttpGet]
         [Route("GetPolicyStatus")]
@@ -41,6 +58,14 @@ namespace Claim.Controllers
         {
             var policystatuslist = policyAddServices.GetAllPolicyStatus();
             return policystatuslist;
+        }
+
+        [HttpGet]
+        [Route("getMemberPolicyDtsById")]
+        public PolicyTble getMemberPolicyDtsById(int policyId)
+        {
+            PolicyTble policyDts = policyAddServices.getMemberPolicyDtsById(policyId);
+            return policyDts;
         }
 
 

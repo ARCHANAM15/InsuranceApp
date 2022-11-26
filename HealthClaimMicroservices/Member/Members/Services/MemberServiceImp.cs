@@ -26,7 +26,7 @@ namespace Members.Services
         {
             var allmemberData = (from h in db.PolicyHistoryTbls
                                  join m in db.MemberRegTbls on h.MemberId equals m.Id
-                                 join p in db.PolicyTbles on h.PolicyId equals p.MemberId 
+                                 join p in db.PolicyTbles on h.PolicyId equals p.PolicyId 
                                  join ps in db.PolicyStatusTbls on h.PolicyStatusId equals ps.StatusId
                                  join l in db.LoginTbls on h.LoginId equals l.Id 
                                  where (h.IsPolicy==false
@@ -62,6 +62,7 @@ namespace Members.Services
 
         }
 
+
         public IEnumerable<memberDataList> Getsearchmember(memberDataList data)
         {
             var searchData = (from m in db.MemberRegTbls
@@ -94,6 +95,7 @@ namespace Members.Services
                 memberdataList.PolicyType = item.PolicyType;
                 memberdataList.PremiumAmout = item.PremiumAmount;
                 memberdataList.StatusDescription = item.policyStatus;
+                memberdataList.SubmittedDate = item.SubmittedDate;
                 memberDataLists.Add(memberdataList);
 
             }
@@ -117,5 +119,6 @@ namespace Members.Services
                 return member;
             }
         }
+
     }
 }

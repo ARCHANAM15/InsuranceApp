@@ -64,8 +64,16 @@
       "DownstreamPathTemplate": "/api/PolicySubmission/submit-policy",
       "DownstreamScheme": "https",
       "ServiceName": "policyService",
-      "UpstreamPathTemplate": "/api/gateway/policySubmission/submit-policy",  
+      "UpstreamPathTemplate": "/api/gateway/policySubmission/submit-policy",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/PolicySubmission/update-policy",
+      "DownstreamScheme": "https",
+      "ServiceName": "policyService",
+      "UpstreamPathTemplate": "/api/gateway/PolicySubmission/update-policy",
+      "UpstreamHttpMethod": [ "Put" ]
     },
     {
       "UseServiceDiscovery": true,
@@ -75,6 +83,14 @@
       "UpstreamPathTemplate": "/api/gateway/policySubmission/GetPolicyStatus",
       "UpstreamHttpMethod": [ "Get" ]
     },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/policySubmission/getMemberPolicyDtsById",
+      "DownstreamScheme": "https",
+      "ServiceName": "policyService",
+      "UpstreamPathTemplate": "/api/gateway/policySubmission/getMemberPolicyDtsById",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
   ],
   "GlobalConfiguration": {
     // "BaseUrl": "http://localhost:44347"
