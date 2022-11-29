@@ -29,18 +29,27 @@ namespace Claim.Services
             return policyDts;
         }
 
-        public PolicyTble SubmitPolicy(PolicyTble PolicyTble)
+        public PolicyTbleDto SubmitPolicy(PolicyTble PolicyTble)
         {
+            PolicyTbleDto dto = new PolicyTbleDto();
+            
             try
             {
                
-               
+                var Insurance = db.PolicyTbles.Where(x => x.MemberId == PolicyTble.MemberId && x.PolicyType == PolicyTble.PolicyType).FirstOrDefault();
+                if (Insurance != null)
+                {
+                    dto.errorMsg = "You already have this insurance in your account.";
+                    return dto;
+                }
+                
                 PolicyTble.EffectiveDate = DateTime.Now;
                 PolicyTble.CreatedDate = DateTime.Now;
                 PolicyTble.ModifiedDate = DateTime.Now;
                 Random generator = new Random();
                 String r = generator.Next(0, 1000000).ToString("D6");
                 PolicyTble.PolicyNumber = Convert.ToInt32(r);
+                dto.PolicyNumber = PolicyTble.PolicyNumber;
                
                 db.PolicyTbles.Add(PolicyTble);
                 db.SaveChanges();
@@ -56,11 +65,11 @@ namespace Claim.Services
                     db.PolicyHistoryTbls.Add(historytbl);
                     db.SaveChanges();
                 }
-                return PolicyTble;
+                return dto;
             }
             catch(Exception ex)
             {
-                return PolicyTble;
+                return dto;
             }
            
 

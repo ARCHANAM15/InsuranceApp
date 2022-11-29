@@ -8,7 +8,7 @@ namespace Claim.Services
 {
    public interface IPolicyAddServices
     {
-        PolicyTble SubmitPolicy(PolicyTble PolicyTble);
+        PolicyTbleDto SubmitPolicy(PolicyTble PolicyTble);
         IEnumerable<PolicyStatusTbl> GetAllPolicyStatus();
 
         PolicyTble updatePolicy(PolicyTble PolicyTble);

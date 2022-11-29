@@ -56,5 +56,7 @@ namespace Members.Controllers
         {
             return memberRegService.GetAllmember();
         }
+
+        
     }
 }
